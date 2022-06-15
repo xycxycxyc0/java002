@@ -1,29 +1,14 @@
 package com;
 
-import java.awt.BorderLayout;
-
-import java.awt.Color;
-
-import java.awt.Font;
-
-import java.awt.GridLayout;
+import java.awt.*;
 
 import java.awt.event.ActionEvent;
-
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import java.util.GregorianCalendar;
-import javax.swing.JButton;
-
-import javax.swing.JComboBox;
-
-import javax.swing.JFrame;
-
-import javax.swing.JLabel;
-
-import javax.swing.JPanel;
+import javax.swing.*;
 
 /*日历程序*/
 
@@ -108,7 +93,7 @@ public class Calender extends JFrame implements ActionListener,Runnable {
 		button_ok.setFont(font);
 		button_today.setFont(font);
 
-		// 设定年份区间，为当前年份的过去2021年到当前年份的未来5000年，
+		// 设定年份区间，为当前年份的过去2022年到当前年份的未来5000年，
 
 		for (int i = now_year - 2022; i <= now_year + 5000; i++) {
 			YearBox.addItem(i + "");
@@ -203,7 +188,7 @@ public class Calender extends JFrame implements ActionListener,Runnable {
 
 */
 
-	private void paintDay() {
+	public void paintDay() {
 		if (todayFlag) {
 			// 要求显示今天的日历
 			year_int = now_year + "";
@@ -245,7 +230,7 @@ public class Calender extends JFrame implements ActionListener,Runnable {
 
 /*
 *绘制按钮。在这里首先要根据选定的月份的第一天是星期几来确定绘制按钮的起始位置
-*其中day_week就是我们要绘制的起始位置，对于那些没有数值可以显示的按钮要换颜色显示。
+*其中day_week就是我们要绘制的起始位置，对于那些非本月按钮要换颜色显示。
 */
 
 		for (int i = day_week; i < day_week + days; count++, i++) {

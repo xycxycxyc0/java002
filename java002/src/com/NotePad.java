@@ -1,14 +1,8 @@
 package com;
 
-import java.awt.BorderLayout;
-import java.awt.Panel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -18,8 +12,6 @@ public class NotePad extends JFrame implements ActionListener {  /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-//创建NotePadWinddow类用来建立记事本GUI
-    //定义窗体组件
 	//定义菜栏条组件
 	JMenuBar jmb;
 	//定义菜单组件
@@ -40,7 +32,7 @@ public class NotePad extends JFrame implements ActionListener {  /**
 	JFileChooser chooser = new JFileChooser();
 	
 	//退出提示框
-	JFrame alertFrame = new JFrame();
+	JFrame alertJFrame = new JFrame();
 	JButton saveButton = new JButton("保存");
 	JButton notsaveButton = new JButton("不保存");
 	JButton cancelButton = new JButton("取消");
@@ -97,7 +89,7 @@ public class NotePad extends JFrame implements ActionListener {  /**
 		//实现文本域组件
 		jta = new JTextArea();
 		jta.getDocument().addDocumentListener(new DocumentListener() {
-			   //监听文本内容的插入事件；
+			   //监听文本内容的去除事件；
 			   public void removeUpdate(DocumentEvent e) {
 			    //keyword = textField.getText();
 				   flag = 1;
@@ -167,23 +159,23 @@ public class NotePad extends JFrame implements ActionListener {  /**
 		notsaveButton.addActionListener(this);
 		cancelButton.addActionListener(this);
 
-		alertFrame.setLayout(new BorderLayout());
-		alertFrame.add(head, BorderLayout.NORTH);
-		alertFrame.add(footer, BorderLayout.SOUTH);
+		alertJFrame.setLayout(new BorderLayout());
+		alertJFrame.add(head, BorderLayout.NORTH);
+		alertJFrame.add(footer, BorderLayout.SOUTH);
 		
 		
-		alertFrame.setTitle("提示");
-		alertFrame.setSize(300,100);
-		alertFrame.setLocation(500, 200);
-		alertFrame.setDefaultCloseOperation(alertFrame.EXIT_ON_CLOSE);
-		alertFrame.setVisible(true);
+		alertJFrame.setTitle("提示");
+		alertJFrame.setSize(300,100);
+		alertJFrame.setLocation(500, 200);
+		alertJFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		alertJFrame.setVisible(true);
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getSource() == jmi[0]) { //新建功能
-			NotePad notePadWindow = new NotePad();
+			NotePad notePad = new NotePad();
 		}
 		if (e.getSource() == jmi[1]) { //打开功能
 			if (jta.getText().equals("")) {
@@ -244,7 +236,7 @@ public class NotePad extends JFrame implements ActionListener {  /**
 			System.exit(0);
 		}
 		if(e.getSource() == cancelButton) { //取消退出
-			alertFrame.setVisible(false);
+			alertJFrame.setVisible(false);
 		}
 	}	
 	
@@ -425,7 +417,6 @@ public class NotePad extends JFrame implements ActionListener {  /**
 			init2();
 		} 
 	}
-		
 	
 	public static void main(String[] args) {
 		//创建NotePad实例对象
